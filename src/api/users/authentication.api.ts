@@ -1,4 +1,4 @@
-import type { twofactor } from "../../data/models/twofactor";
+import type { twofactor } from "../../data/models/twofactor.model";
 import type { user } from "../../data/models/user.model";
 import axiosInstance from "../axios_instance";
 
