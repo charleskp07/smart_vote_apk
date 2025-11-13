@@ -13,5 +13,6 @@ export type user = {
     phone: string,
     role: RoleEnums,
     success: boolean,
+    message: string,
 }
 

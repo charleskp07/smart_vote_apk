@@ -56,16 +56,16 @@ export default function TwoFactor() {
 
       if (result.success) {
 
-        console.log('success')
+        // console.log('success')
         localStorage.setItem("auth_token", result.token);
 
         if (result.user.role === RoleEnums.SYSTEME_ADMIN) {
 
-          navigate("/dashboard");
+          navigate("/admin/dashboard");
 
         } else if (result.user.role === RoleEnums.ADMIN) {
 
-          navigate("/organizer-dashboard");
+          navigate("/organizer/dashboard");
 
         } else {
 
@@ -74,10 +74,13 @@ export default function TwoFactor() {
 
         }
       } else {
-        console.log("echec")
+        const backendError = "code incorrect";
+        setErrors({ code: backendError });
       }
     } catch (error) {
       console.log(error)
+      const backendError = "code incorrect";
+        setErrors({ code: backendError });
     } finally {
       setIsLoading(false);
     }

@@ -24,16 +24,16 @@ export default function Login() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
-  const [errors, setErrors] = useState<{ email?: string; password?: string }>({});
+  const [errors, setErrors] = useState<{ email?: string; password?: string; global?: string }>({});
 
   const OnEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
-    setErrors((prev) => ({ ...prev, email: undefined }));
+    setErrors((prev) => ({ ...prev, email: undefined, global: undefined }));
   }
 
   const OnPasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(event.target.value);
-    setErrors((prev) => ({ ...prev, password: undefined }));
+    setErrors((prev) => ({ ...prev, password: undefined, global: undefined }));
   }
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -61,10 +61,13 @@ export default function Login() {
       if (result.success) {
         navigate("/two-factor", { state: { email } });
       } else {
-        console.log("echec")
+        setErrors({ global: "Identifiants incorrects" });
       }
+
     } catch (error) {
       console.log(error)
+      const backendError = "E-mail ou mot de passe incorrects, veuillez réessayer.";
+      setErrors({ global: backendError });
     } finally {
       setIsLoading(false);
     }
@@ -83,6 +86,13 @@ export default function Login() {
             Retour
           </button>
           <h1>Se connecter</h1>
+
+          {errors.global && (
+            <div style={{ color: "red", marginBottom: "10px", fontSize: "0.9em" }}>
+              {errors.global}
+            </div>
+          )}
+
           <form onSubmit={handleSubmit} method="post">
 
             <div>

@@ -4,9 +4,11 @@ type VoteModaleProps = {
     show: boolean;
     onClose: () => void;
     onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
+    candidateId?: number; 
+    candidateName : string;
 };
 
-export default function VoteModale({ show, onClose, onSubmit }: VoteModaleProps) {
+export default function VoteModale({ show, onClose, onSubmit, candidateId, candidateName }: VoteModaleProps) {
     if (!show) return null;
 
     return (
@@ -16,12 +18,17 @@ export default function VoteModale({ show, onClose, onSubmit }: VoteModaleProps)
                     Fermer
                 </button>
 
-                <h3>Voter pour ce candidat</h3>
+                <h3>Voter pour {candidateName ?? "Inconnu"}</h3>
 
                 <form onSubmit={onSubmit}>
+
+                    <input type="hidden" name="candidate_id" value={candidateId} />
+
+
+
                     <div >
                         <label>Nom complet</label><br />
-                        <input type="text" name="full_name" />
+                        <input type="text" name="full_name"  />
                     </div>
 
                     <div >

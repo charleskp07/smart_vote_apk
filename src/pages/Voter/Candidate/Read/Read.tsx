@@ -4,6 +4,7 @@ import { VoterCandidateApi } from "../../../../api/candidates/voter.api";
 import defaultAvatar from '../../../../assets/images/default-avatar.jpg';
 import { GenderEnums } from "../../../../data/models/candidate.model";
 import VoteModale from "../../../../components/Modale/Modale";
+import Loader from "../../../../components/Loader/Loader"; // ✅ ton composant loader
 
 export default function Read() {
     const navigate = useNavigate();
@@ -17,10 +18,8 @@ export default function Read() {
 
     const [showModal, setShowModal] = useState(false);
 
-
-
     const [id, setId] = useState<number>()
-    const [competition_id, setCompetitionId] = useState<number>()
+    // const [competition_id, setCompetitionId] = useState<number>()
     const [photo, setPhoto] = useState<string | null>("")
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("")
@@ -39,7 +38,7 @@ export default function Read() {
                     setIsLoading(true)
                     const data = await VoterCandidateApi.read(parseInt(params.id || "0", 10));
                     setId(data.id)
-                    setCompetitionId(data.competition_id)
+                    // setCompetitionId(data.competition_id)
                     setPhoto(data.photo === "null" ? null : data.photo)
                     setLastName(data.last_name)
                     setFirstName(data.first_name)
@@ -63,25 +62,26 @@ export default function Read() {
 
     }, [params]);
 
-
-    // const handleVote = async (id: number) => {
-    //     navigate(`/voter/candidates/${id}/read`);
-    // }
-
-
     const handleVote = () => {
         console.log("Vote soumis :");
     };
 
     const fullName = `${lastName} ${firstName}`;
 
+    if (isLoading) {
+        return (
+            <div>
+                <Loader />
+            </div>
+        )
+    }
+
     return (
         <div>
             <button onClick={goToBack}>
                 retour
             </button>
-            <h1>Details du candidat {firstName} </h1>
-
+            <h1>Details {gender === GenderEnums.MASCULIN ? "du candidat" : "de la candidate"}  {firstName} {lastName} </h1>
 
             <img src={photo ? `http://127.0.0.1:8000/storage/${photo}` : defaultAvatar}
                 alt={fullName}
@@ -105,14 +105,13 @@ export default function Read() {
                 voter
             </button>
 
-
             <VoteModale
                 show={showModal}
                 onClose={() => setShowModal(false)}
-               onSubmit={handleVote}
+                onSubmit={handleVote}
+                candidateId={id}
+                candidateName={`${lastName} ${firstName}`}
             />
-
-
         </div>
     )
 }

@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router";
 import { VoterCompetitionApi } from "../../../../api/competitions/voter.api";
 import type { candidate } from "../../../../data/models/candidate.model";
 import type { competition } from "../../../../data/models/competition.model";
+import Loader from "../../../../components/Loader/Loader";
 
 
 
@@ -55,6 +56,13 @@ export default function Read() {
         navigate(`/voter/candidates/${id}/read`);
     }
 
+    if (isLoading) {
+        return (
+            <div>
+                <Loader />
+            </div>
+        )
+    }
 
 
     return (
