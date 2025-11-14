@@ -56,8 +56,9 @@ export default function TwoFactor() {
 
       if (result.success) {
 
-        // console.log('success')
-        localStorage.setItem("auth_token", result.token);
+        // console.log(result.token);
+
+        localStorage.setItem("token", result.token);
 
         if (result.user.role === RoleEnums.SYSTEME_ADMIN) {
 
@@ -80,7 +81,7 @@ export default function TwoFactor() {
     } catch (error) {
       console.log(error)
       const backendError = "code incorrect";
-        setErrors({ code: backendError });
+      setErrors({ code: backendError });
     } finally {
       setIsLoading(false);
     }
@@ -90,9 +91,13 @@ export default function TwoFactor() {
   return (
 
     <Fragment >
-      <div className="contenair">
+      <br /><br /><br />
+      <div className="auth-cover">
 
-        <h1>Verification de code</h1>
+        <h1 className="text-center">Verification de code</h1>
+        <p className="text-center"> Un code de confirmation à six chiffre a été envoyé à votre e-mail. saisissez-le dans le champs pour
+          continer.</p>
+          <br />
         <form onSubmit={handleSubmit} method="post">
 
           <div>
@@ -104,11 +109,12 @@ export default function TwoFactor() {
             )}
           </div>
 
-          <button type="submit">
+          <br />
+          <button type="submit" className="full-width primary-button">
             {isLoading ? <Loader /> : <span>Verifier</span>}</button>
 
         </form>
-
+            <br />
       </div>
     </Fragment>
 

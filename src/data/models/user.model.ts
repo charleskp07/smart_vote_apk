@@ -6,13 +6,14 @@ export enum RoleEnums {
 
 
 export type user = {
-    id: number,
-    name: string,
-    email: string,
-    password: string,
-    phone: string,
-    role: RoleEnums,
-    success: boolean,
-    message: string,
+  id: number,
+  name: string,
+  email: string,
+  password: string,
+  phone: string,
+  role: RoleEnums,
+  success: boolean,
+  message: string,
+  token: string;
 }
 

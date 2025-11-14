@@ -13,7 +13,7 @@ export default function AdminSidebar() {
                     </li>
                     <li>
                         <div>
-                            <Link to="/admin/competitions">Competitons</Link>
+                            <Link to="/admin/competitions">Competitions</Link>
                         </div>
                     </li>
                     <li>

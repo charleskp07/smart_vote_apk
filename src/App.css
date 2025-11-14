@@ -1,0 +1,45 @@
+:root {
+    --primary-color: #9BBBFC;
+    --secondary-color: #D9EFF7;
+}
+
+
+
+.auth-cover {
+    justify-self: center;
+    max-width: 300px;
+    padding: 15px 40px 40px 30px;
+    border: 1px solid #CCC;
+    border-radius: 30px;
+}
+
+.full-width {
+    width: 100%;
+}
+
+
+.text-center {
+    text-align: center;
+}
+
+.primary-button {
+    color: #FFF;
+    font-size: 17px;
+    border-radius: 10px;
+    height: 35px;
+    border: none;
+    background-color: var(--primary-color);
+    cursor: pointer;
+}
+
+.primary-button:hover {
+    background-color: #9BBBEA;
+}
+
+/* .wrap-content {
+    position: relative;
+    top: 0;
+    left: 200px;
+    right: 0;
+    bottom: 0;
+} */

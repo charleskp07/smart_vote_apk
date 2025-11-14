@@ -4,7 +4,7 @@ import { VoterCandidateApi } from "../../../../api/candidates/voter.api";
 import defaultAvatar from '../../../../assets/images/default-avatar.jpg';
 import { GenderEnums } from "../../../../data/models/candidate.model";
 import VoteModale from "../../../../components/Modale/Modale";
-import Loader from "../../../../components/Loader/Loader"; // ✅ ton composant loader
+import Loader from "../../../../components/Loader/Loader";
 
 export default function Read() {
     const navigate = useNavigate();

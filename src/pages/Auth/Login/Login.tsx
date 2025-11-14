@@ -78,14 +78,18 @@ export default function Login() {
   return (
     <div className="">
       <Fragment >
-        <div className="contenair">
-          <button type="button" className="btn btn--ghost" onClick={goToBack}>
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5 3 12 10.5 4.5M3 12h18" />
-            </svg>
-            Retour
-          </button>
-          <h1>Se connecter</h1>
+        <button type="button" className="btn btn--ghost" onClick={goToBack}>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5 3 12 10.5 4.5M3 12h18" />
+          </svg>
+          Retour
+        </button>
+
+        <br /><br /><br />
+        <div className="auth-cover">
+          <h1 className="text-center">Se connecter</h1>
+
+          <p className="text-center">Remplissez vos identifiants pour accéder à votre compte...</p>
 
           {errors.global && (
             <div style={{ color: "red", marginBottom: "10px", fontSize: "0.9em" }}>
@@ -104,6 +108,7 @@ export default function Login() {
               )}
             </div>
 
+              <br />
             <div>
               <Input label='Mot de passe' reference='password' type='password' placeholder='Saisir votre mot de passe' onChange={OnPasswordChange} value={password} />
               {errors.password && (
@@ -112,13 +117,13 @@ export default function Login() {
                 </p>
               )}
             </div>
-
-            <button type="submit" disabled={isLoading} >
+            <br />
+            <button type="submit" disabled={isLoading} className="full-width primary-button">
               {isLoading ? <Loader /> : <span>se connecter</span>}
             </button>
-
           </form>
 
+            <br />
         </div>
       </Fragment>
 

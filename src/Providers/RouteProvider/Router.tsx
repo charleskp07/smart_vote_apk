@@ -7,7 +7,13 @@ import OrganizerDashboard from "../../pages/Organizer/Dashboard/Dashboard";
 import VoterReadCompetition from "../../pages/Voter/Competition/Read/Read";
 import VoterReadCandidate from "../../pages/Voter/Candidate/Read/Read";
 import UserList from "../../pages/Admin/Users/List/List";
+import UserCreate from "../../pages/Admin/Users/Create/Create";
+import UserRead from "../../pages/Admin/Users/Read/Read";
+import UserEdit from "../../pages/Admin/Users/Edit/Edit";
+
 import AdminListCompetition from "../../pages/Admin/Competitons/List/List";
+import AdminCreateCompetition from "../../pages/Admin/Competitons/Create/Create";
+
 import OrginizerListCompetition from "../../pages/Organizer/Competitons/List/List";
 
 
@@ -50,14 +56,14 @@ const router = createBrowserRouter([
             },
             {
                 path: "create",
-                // element: 
+                element: <AdminCreateCompetition />
             },
             {
                 path: ":id/read",
                 // element: 
             },
         ]
-        
+
     },
     {
         path: '/admin/candidates',
@@ -75,7 +81,7 @@ const router = createBrowserRouter([
                 // element: 
             },
         ]
-        
+
     },
     {
         path: '/admin/users',
@@ -86,14 +92,18 @@ const router = createBrowserRouter([
             },
             {
                 path: "create",
-                // element: 
+                element: < UserCreate />
             },
             {
                 path: ":id/read",
-                // element: 
+                element: <UserRead />
+            },
+            {
+                path: ":id/edit",
+                element: <UserEdit />
             },
         ]
-        
+
     },
     {
         path: '/organizer/competitions',
@@ -111,7 +121,7 @@ const router = createBrowserRouter([
                 // element: 
             },
         ]
-        
+
     },
     {
         path: '/organizer/candidates',
@@ -129,7 +139,7 @@ const router = createBrowserRouter([
                 // element: 
             },
         ]
-        
+
     },
 ])
 
