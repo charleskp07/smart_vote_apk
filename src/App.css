@@ -30,6 +30,7 @@
     border: none;
     background-color: var(--primary-color);
     cursor: pointer;
+    align-content: center;
 }
 
 .primary-button:hover {

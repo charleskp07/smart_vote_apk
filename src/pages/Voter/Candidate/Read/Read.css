@@ -1,0 +1,74 @@
+.candidate-container {
+    max-width: 900px;
+    margin: 25px auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.back-button {
+    padding: 8px 14px;
+    border: 1px solid #444;
+    background: #fff;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.back-button:hover {
+    background: #f2f2f2;
+}
+
+.candidate-photo-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.candidate-photo {
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+}
+
+.candidate-title {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.candidate-info {
+    margin-top: 25px;
+    border: 1px solid #ddd;
+    padding: 18px;
+    border-radius: 8px;
+    background: #fff;
+}
+
+.candidate-info p {
+    margin: 8px 0;
+}
+
+.vote-button {
+    width: 100%;
+    margin-top: 25px;
+    padding: 12px;
+    background: #444;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.vote-button:hover {
+    background: #333;
+}
+
+.loader-container {
+    margin-top: 60px;
+    display: flex;
+    justify-content: center;
+}

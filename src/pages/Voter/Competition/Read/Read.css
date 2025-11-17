@@ -1,0 +1,91 @@
+.read-container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-family: Arial, sans-serif;
+}
+
+.back-button {
+    padding: 8px 14px;
+    border: 1px solid #444;
+    background: #fff;
+    cursor: pointer;
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
+
+.back-button:hover {
+    background: #f2f2f2;
+}
+
+.header-image-container {
+    width: 100%;
+    height: 260px;
+    overflow: hidden;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.header-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.competition-info {
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 18px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+.competition-title {
+    margin-bottom: 12px;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.candidates-title {
+    margin-bottom: 15px;
+    font-size: 22px;
+}
+
+.empty-message {
+    padding: 15px;
+    text-align: center;
+}
+
+.candidates-grid {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.candidate-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 18px;
+    border-radius: 8px;
+    transition: 0.2s ease;
+}
+
+.candidate-card:hover {
+    border-color: #bbb;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.candidate-button {
+    width: 100%;
+    padding: 10px;
+    background: #444;
+    color: white;
+    border: none;
+    margin-top: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.candidate-button:hover {
+    background: #333;
+}

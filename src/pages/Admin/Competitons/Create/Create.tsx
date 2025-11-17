@@ -191,7 +191,7 @@ export default function Create() {
                         <Input
                             label="Date de début"
                             reference="start_date"
-                            type="date"
+                            type="datetime-local"
                             placeholder=""
                             onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                                 setStartDate(e.target.value);
@@ -203,11 +203,13 @@ export default function Create() {
                     </div>
 
                     <br />
+                        
+                      
                     <div>
                         <Input
                             label="Date de clôture"
                             reference="end_date"
-                            type="date"
+                            type="datetime-local"
                             placeholder=""
                             onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                                 setEndDate(e.target.value);

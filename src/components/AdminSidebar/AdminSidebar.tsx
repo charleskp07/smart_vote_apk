@@ -1,5 +1,5 @@
 import { Link } from 'react-router'
-import './AdminSidebar.css'
+// import './AdminSidebar.css'
 
 export default function AdminSidebar() {
     return (

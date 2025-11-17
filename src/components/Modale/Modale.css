@@ -14,4 +14,16 @@
     border-radius: 20px;
     width: 350px;
     position: relative;
+    padding: 30px 50px 30px 40px;
+}
+
+.close-btn {
+    display: flex;
+    align-items: center;
+    justify-self: right;
+    
+    svg {
+        width: 16px;
+
+    }
 }

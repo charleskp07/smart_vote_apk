@@ -4,103 +4,88 @@ import type { competition } from "../../data/models/competition.model";
 import Loader from "../../components/Loader/Loader";
 import { VoterCompetitionApi } from "../../api/competitions/voter.api";
 import defaultImage from '../../../src/assets/images/image-coming.webp';
-import './Home.css'
+import './Home.css';
 
 export default function Home() {
-
-
-  const [isLoading, setIsLoading] = useState<boolean>(true)
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [competitions, setCompetitions] = useState<Array<competition>>([]);
-
-
   const navigate = useNavigate();
-
 
   const fetchCompetitions = async () => {
     try {
       const data = await VoterCompetitionApi.getAll();
       setCompetitions(data);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
     }
-  }
+  };
 
-  const handleReadCompetiton = async (id: number) => {
+  const handleReadCompetiton = (id: number) => {
     navigate(`/voter/competitions/${id}/read`);
-  }
+  };
 
   useEffect(() => {
-
     fetchCompetitions();
-
   }, []);
 
   return (
-    <div>
-      <h1>Liste des competitions</h1>
+    <div className="home-container">
+      <h1 className="home-title">Liste des compétitions</h1>
 
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          {competitions.length === 0 ? (
+            <div className="empty-message">Aucune compétition n'a été créée.</div>
+          ) : (
+            <div className="competitions-grid">
+              {competitions.map((competition) => (
+                <div
+                  key={competition.id}
+                  className="competition-card"
+                  onClick={() => handleReadCompetiton(competition.id)}
+                >
+                  <img
+                    src={competition.image ? `http://127.0.0.1:8000/storage/${competition.image}` : defaultImage}
+                    alt={competition.name}
+                    className="competition-image"
+                  />
 
-      {
-        isLoading ?
-          <Loader /> :
-          <>
-            {
-              competitions.length === 0 ? (
-                <div>
-                  Aucune competition n'a été créé
+                  <h2 className="competition-name">{competition.name}</h2>
+
+                  <p className="competition-date">
+                    Du {new Date(competition.start_date).toLocaleString("fr-FR", {
+                      day: "2-digit",
+                      month: "long",
+                      year: "numeric",
+                    }) }
+                     au {new Date(competition.end_date).toLocaleString("fr-FR", {
+                      day: "2-digit",
+                      month: "long",
+                      year: "numeric",
+                    })}
+                  </p>
+
+                  <p className="competition-price">
+                    Prix du vote : <b>{competition.vote_value} FCFA</b>
+                  </p>
+
+                  <button className="read-button">
+                    Voir les candidats
+                  </button>
                 </div>
-              ) : (
-                <div className="competitions-cover">
-                  {competitions.map((competition, index) => {
-                    return (
-                      <div key={index}>
-                        <div onClick={() => handleReadCompetiton(competition.id)} className="competition-cover">
-                          <div>
-                            <img src={competition.image ? `http://127.0.0.1:8000/storage/${competition.image}` : defaultImage}
-                              alt={competition.name} width="200" />
-                          </div>
-                          <span>{competition.name}</span> <br />
-                          <span><b>Du</b> {new Date(competition.start_date).toLocaleString("fr-FR", {
-                            day: "2-digit",
-                            month: "long",
-                            year: "numeric",
-                            hour: "2-digit",
-                            minute: "2-digit",
-                          })}
-                            <b> au</b> {new Date(competition.end_date).toLocaleString("fr-FR", {
-                              day: "2-digit",
-                              month: "long",
-                              year: "numeric",
-                              hour: "2-digit",
-                              minute: "2-digit",
-                            })} </span> <br />
-                          <b>Prix unitaire du vote :</b> {competition.vote_value} FCFA
+              ))}
+            </div>
+          )}
+        </>
+      )}
 
-
-                          <br /><br />
-                          <button type="button" onClick={() => handleReadCompetiton(competition.id)}>
-                            Voir les candidats
-
-                          </button>
-                        </div>
-
-                        <br /><br /><br />
-                      </div>
-                    )
-                  })}
-                </div>
-              )
-            }
-          </>
-      }
-      <div>
+      <div className="login-link">
         <Link to="/login">Se connecter</Link>
       </div>
-
-
-
     </div>
-  )
+  );
 }

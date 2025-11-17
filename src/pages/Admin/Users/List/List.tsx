@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router'
-import './List.css'
+// import './List.css'
 import AdminSidebar from '../../../../components/AdminSidebar/AdminSidebar'
 import { useEffect, useState } from 'react';
 import type { user } from '../../../../data/models/user.model';
