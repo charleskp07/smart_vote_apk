@@ -18,6 +18,11 @@ export const competitionApi = {
         return response.data.data;
     },
 
+    update: async (id: number, formData: FormData): Promise<competition[]> => {
+        const response = await axiosInstance.post(`/admin/competition/${id}/`, formData) ;
+        return response.data;
+    },
+
 
     destroy: async (id: number): Promise<competition[]> => {
         const response = await axiosInstance.delete(`/admin/competitions/${id}/`);

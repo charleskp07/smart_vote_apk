@@ -8,6 +8,10 @@ import VoterReadCompetition from "../../pages/Voter/Competition/Read/Read";
 import VoterReadCandidate from "../../pages/Voter/Candidate/Read/Read";
 import UserList from "../../pages/Admin/Users/List/List";
 import AdminListCompetition from "../../pages/Admin/Competitons/List/List";
+import AdminReadCompetition from "../../pages/Admin/Competitons/Read/Read";
+import AdminEditCompetition from "../../pages/Admin/Competitons/Edit/Edit";
+import AdminCreateCompetition from "../../pages/Admin/Competitons/Create/Create";
+
 import OrginizerListCompetition from "../../pages/Organizer/Competitons/List/List";
 
 
@@ -50,11 +54,15 @@ const router = createBrowserRouter([
             },
             {
                 path: "create",
-                // element: 
+                 element: <AdminCreateCompetition />
             },
             {
                 path: ":id/read",
-                // element: 
+                 element: <AdminReadCompetition />
+            },
+            {
+                path: ":id/edit",
+                 element: <AdminEditCompetition />
             },
         ]
         

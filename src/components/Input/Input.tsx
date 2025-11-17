@@ -29,7 +29,7 @@ export default function Input({
                 name={reference}
                 id={reference}
                 placeholder={placeholder}
-                value={value} 
+                value={value}
                 onChange={onChange} />
         </div>
     )
